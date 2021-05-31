@@ -1,0 +1,43 @@
+.table-responsive-md {
+    max-height: 200px;
+    overflow: auto;
+  }
+  
+  .table-header {
+    height: 200px;
+    .ag-grid-height {
+      height: 100% !important;
+    }
+  }
+  
+  .blue {
+    background-color: #013169 !important;
+    border: 0 !important;
+    color: #fff;
+  }
+  
+  .orange {
+    background-color: rgb(212, 156, 0) !important;
+    border: 0 !important;
+    color: #fff;
+    }
+    
+  .green {
+  background-color: rgb(4, 161, 43) !important;
+  border: 0 !important;
+  color: #fff;
+  }
+  
+  :host ::ng-deep {
+    .no-header {
+        height: 200px;
+    
+        .ag-grid-height {
+            height: 100%;
+        }
+    }
+    gwf-grid-header {
+        display: none;
+    }
+  }
+  

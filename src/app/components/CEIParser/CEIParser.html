@@ -1,0 +1,142 @@
+<textarea
+  [(ngModel)]="ceiData"
+  (change)="dataChanged()"
+  style="height: 200px; width: 80%"
+  name="textareaCei"
+></textarea>
+<br />
+Bens e Direitos
+<table class="table table-sm table-hover import-table">
+  <thead>
+    <tr>
+      <td>Discriminação</td>
+      <td>CNPJ</td>
+      <td>Total</td>
+    </tr>
+  </thead>
+  <tbody>
+    <ng-container *ngFor="let row of tableRows">
+      <tr *ngIf="row.isBensEDireitos">
+        <td>
+          <input
+            type="text"
+            style="width: 1000px"
+            [value]="row.irpfDescription"
+          />
+        </td>
+        <td>
+          <input type="text" style="width: 200px" [value]="row.asset?.cnpj" />
+        </td>
+        <td>
+          <input
+            type="text"
+            style="width: 200px"
+            [value]="row.asset?.totalCostStr()"
+          />
+        </td>
+      </tr>
+    </ng-container>
+  </tbody>
+</table>
+<br />
+Rendimentos Isentos e não Tributáveis
+<input type="text" style="width: 200px" [value]="this.netSales" />
+
+<br />
+<table class="table table-sm table-hover import-table">
+  <thead>
+    <tr>
+      <td>Ação</td>
+      <td>Qtd Venda</td>
+      <td>Preço Medio Compra</td>
+      <td>Preço Medio Venda</td>
+      <td>Lucro</td>
+    </tr>
+  </thead>
+  <tbody>
+    <ng-container *ngFor="let recipient of assetsConsolidated | keyvalue">
+      <tr>
+        <td>
+          <input
+            type="text"
+            style="width: 100px"
+            [value]="recipient.value.symbol"
+          />
+        </td>
+        <td>
+          <input
+            type="text"
+            style="width: 100px"
+            [value]="recipient.value.amountSell"
+          />
+        </td>
+        <td>
+          <input
+            type="text"
+            style="width: 100px"
+            [value]="recipient.value.mediumBuyPriceCalc"
+          />
+        </td>
+        <td>
+          <input
+            type="text"
+            style="width: 100px"
+            [value]="recipient.value.mediumSellPriceCalc"
+          />
+        </td>
+        <td>
+          <input
+            type="text"
+            style="width: 200px"
+            [value]="recipient.value.profitStr()"
+          />
+        </td>
+      </tr>
+    </ng-container>
+  </tbody>
+</table>
+
+<!-- <table class="table table-sm table-hover import-table">
+  <thead>
+    <tr>
+      <td>Ação</td>
+      <td>Lucro</td>
+    </tr>
+  </thead>
+  <tbody>
+    <ng-container *ngFor="let row of tableRows">
+      <tr>
+        <td>
+          <input type="text" style="width: 100px" [value]="row.asset?.symbol" />
+        </td>
+        <td>
+          <input
+            type="text"
+            style="width: 200px"
+            [value]="row.asset?.profitStr()"
+          />
+        </td>
+      </tr>
+    </ng-container>
+  </tbody>
+</table> -->
+<!-- <table class="table table-sm table-hover import-table">
+  <thead>
+    <tr>
+      <ng-container *ngFor="let header of tableHeaders">
+        <ng-container *ngFor="let data of header.data">
+          <th scope="col">{{data}}</th>
+        </ng-container>
+      </ng-container>
+    </tr>
+  </thead>
+  <tbody>
+    <ng-container *ngFor="let row of tableRows">
+      <tr>
+        <ng-container *ngFor="let data of row.data">
+          <td>{{data}}</td>
+        </ng-container>
+      </tr>
+    </ng-container>
+  </tbody>
+</table> -->
